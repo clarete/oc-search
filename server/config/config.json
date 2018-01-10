@@ -8,6 +8,15 @@
     }
   },
 
+  "docker": {
+    "http_port": 8000,
+    "db": {
+      "client": "mysql",
+      "connection": "mysql://root:foo@mysql/opencollective",
+      "pool": { "min": 2, "max": 10 }
+    }
+  },
+
   "test": {
   },
 

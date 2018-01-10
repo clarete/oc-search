@@ -5,4 +5,5 @@ module.exports = {
   test: config.test.db,
   development: config.development.db,
   production: config.production.db,
+  docker: config.docker.db,
 };
