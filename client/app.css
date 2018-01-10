@@ -1,0 +1,29 @@
+body {
+    padding-top: 80px;
+}
+
+.col-centered {
+    float: none;
+    margin: 0 auto;
+}
+
+.col-form {
+    padding: 50px;
+}
+
+.result-list {
+    margin-top: 50px;
+    padding: 0;
+    list-style: none;
+}
+
+.result-item {
+    border-bottom: solid 1px gray;
+    padding: 10px 0;
+}
+
+.result-item-name {
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
