@@ -1,0 +1,87 @@
+* Open Collective Search App
+
+  Standalone application to search collectives.
+
+* Run
+
+** With Docker
+
+   First make sure docker-compose is installed and working. Then run
+   the following command on your terminal.
+
+   #+begin_src bash
+   $ docker-compose up --build
+   #+end_src
+
+** Manually
+
+*** Database
+
+    If the =MySQL= database server is already up and running in your
+    computer, there are two steps that must be taken before data can be
+    imported:
+
+**** Create a new database
+
+     Open up your favorite shell and run the following command.
+
+     #+begin_src bash
+     mysql -u <user> -p -e "create database opencollective"
+     #+end_src
+
+     Remember to replace =<user>= with whatever user is configured in
+     the database server.
+
+**** Configure database parameters
+
+     The default database settings for this app are defined in the file
+     =server/config/config.json=. The key that needs to be configured is
+     the =environment.db.connection=.
+
+**** Run migrations
+
+     #+begin_src bash
+     export JSBIN=node_modules/.bin/     
+     $JSBIN/babel-node $JSBIN/knex --cwd ./server/models migrate:latest
+     #+end_src
+  
+*** Run the import script
+
+    #+begin_src bash
+     export JSBIN=node_modules/.bin/
+     $JSBIN/babel-node ./server/tools/importData ./data/data.csv
+     #+end_src
+
+* What can be improved
+
+** Build Process
+
+   The client code is being =transpiled= with =webpack= and the server
+   is using a command in =package.json=. It would be nice to unify
+   that and centralize the build.
+
+** Search
+
+   Currently looks for info in three fields: name, description and
+   =longDescription=. It could include tags and allow the user to look
+   into =longDescription= or not.
+
+** Testing
+
+   Although the structure of the project is prepared for testing,
+   there's nothing being tested right now.
+
+** Import System
+
+   Some lines contain some encoding problems that could be handled in
+   a more elegant way.
+
+** UI
+
+   Almost everything! :D But more urgently show more info about each
+   project.
+
+** Pagination
+
+   The search results are returned all at once right now. Pagination
+   wasn't prioritized because of the size of the input data file.
