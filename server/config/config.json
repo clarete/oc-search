@@ -1,0 +1,16 @@
+{
+  "development": {
+    "http_port": 8000,
+    "db": {
+      "client": "mysql",
+      "connection": "mysql://root:foo@127.0.0.1/opencollective",
+      "pool": { "min": 2, "max": 10 }
+    }
+  },
+
+  "test": {
+  },
+
+  "production": {
+  }
+}
