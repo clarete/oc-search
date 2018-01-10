@@ -13,7 +13,8 @@ const toInt = (value: string): number =>
   parseInt(value, 10);
 
 const tableIsEmpty = async (): Promise<boolean> => {
-  return await knex('collectives').count() === 0;
+  const [ { count } ] = await knex('collectives').count('id as count');
+  return count === 0;
 }
 
 // Callback to be executed when the CSV stream reader emits data
